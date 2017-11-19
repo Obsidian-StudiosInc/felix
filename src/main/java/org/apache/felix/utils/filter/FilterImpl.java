@@ -156,6 +156,10 @@ public class FilterImpl implements Filter {
         return match0(new CaseInsensitiveDictionary(dictionary));
     }
 
+    public boolean matches(Map<String,?> map) {
+        return match0(map);
+    }
+
     /**
      * Filter with case sensitivity using a <code>Dictionary</code>. This
      * <code>Filter</code> is executed using the specified
@@ -586,13 +590,13 @@ public class FilterImpl implements Filter {
                 switch (operation) {
                     case APPROX :
                     case EQUAL : {
-                        return ((Version) value1).compareTo(converted) == 0;
+                        return ((Version) value1).compareTo((Version)converted) == 0;
                     }
                     case GREATER: {
-                        return ((Version) value1).compareTo(converted) >= 0;
+                        return ((Version) value1).compareTo((Version)converted) >= 0;
                     }
                     case LESS: {
-                        return ((Version) value1).compareTo(converted) <= 0;
+                        return ((Version) value1).compareTo((Version)converted) <= 0;
                     }
                 }
             } else {
